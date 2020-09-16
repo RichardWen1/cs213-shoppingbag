@@ -13,4 +13,14 @@ public class GroceryItem {
 	public String toString() {
 		return name + ": $" + String.format("%.2f", price) + " : " + (taxable ? "is taxable" : "tax free");
 	}
+	
+	public String getName() {
+		return name;
+	}
+	public double getPrice() {
+		return price;
+	}
+	public boolean isTaxable() {
+		return taxable;
+	}
 }

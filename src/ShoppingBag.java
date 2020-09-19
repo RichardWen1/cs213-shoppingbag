@@ -55,5 +55,11 @@ public class ShoppingBag {
 		return taxablePrice * SALES_TAX;
 	}
 	
-	public void print() { }
+	public void print() { 
+		if(size==0) {
+			System.out.println("The bag is empty!");
+		}else {
+			System.out.println("You have "+size+" item(s) in the bag.");
+		}
+	}
 }

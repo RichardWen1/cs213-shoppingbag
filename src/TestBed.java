@@ -4,6 +4,11 @@ Test cases are documented in the TestSpecification.doc document
 @author Richard Wen, Elise Merritt
 */
 public class TestBed {
+	/**
+	Uses test cases to test the add(), remove(), grow(), salesTax() in ShoppingBag class
+	Makes three ShoppingBag instances with several Grocery Items as test cases
+	See TestSpecification.doc document for further details.
+	*/
 	public static void main(String[] args) {
 		
 		//tests the add() method in ShoppingBag

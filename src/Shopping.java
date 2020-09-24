@@ -37,7 +37,7 @@ public class Shopping {
 	@return true if the user is not finished shopping, otherwise false
 	*/
 	private boolean executeCommand(ShoppingBag bag, String command) {
-		String[] args = command.split(" |\t");
+		String[] args = command.trim().split("[ \t]+");
 		if (args.length < 1) {
 			invalidCommand();
 			return true;
@@ -128,11 +128,11 @@ public class Shopping {
 			invalidCommand();
 			return;
 		}
-		if(bag.getSize()==0) {
+		if (bag.getSize() == 0) {
 			System.out.println("The bag is empty!");
 			return;
 		}
-		System.out.println("**You have "+bag.getSize()+" item(s) in the bag:");
+		System.out.println("**You have " + bag.getSize() + " item(s) in the bag:");
 		bag.print();
 		System.out.println("**End of list");
 	}

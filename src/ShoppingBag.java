@@ -112,13 +112,8 @@ public class ShoppingBag {
 	}
 	
 	/**
-<<<<<<< HEAD
 	Displays the Grocery Items contained in the Shopping Bag.
 	The name, price, and taxable status are printed for each Grocery Item in
-=======
-	Displays the Grocery items contained in a Shopping Bag.
-	The name, price, and taxable status is printed for each Grocery Item in
->>>>>>> refs/remotes/origin/master
 	the bag.
 	*/
 	public void print() {
@@ -137,15 +132,9 @@ public class ShoppingBag {
 	}
 	
 	/**
-<<<<<<< HEAD
 	Tests the add(), remove(), grow(), salesTax() functions of the ShoppingBag class.
 	Makes three ShoppingBag instances with several Grocery Items as test cases.
 	See TestSpecification.doc for further details on test cases.
-=======
-	Tests the add(), remove(), grow(), salesTax() functions of the ShoppingBag class
-	Makes three ShoppingBag instances with several Grocery Items as test cases
-	See TestSpecification.doc document for further details on test cases.
->>>>>>> refs/remotes/origin/master
 	*/
 	public static void main(String[] args) {
 		

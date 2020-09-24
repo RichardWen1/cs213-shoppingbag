@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Shopping {
 	/**
 	Method that runs project by creating a shopping bag, then allowing users 
-	to manipulate bag contents through one-letter inputs until the quit (Q)
+	to manipulate bag contents through newline-delimited inputs until the quit (Q)
 	command is received. User inputs processed using Scanner class.
 	*/
 	public void run() {
@@ -31,6 +31,10 @@ public class Shopping {
 	of a bag (C), and quit shopping (Q, which also automatically checks out bag 
 	contents) using the appropriate one-letter command. Any other commands are 
 	considered invalid.
+	The add (A) and remove (R) commands must be followed with exactly three additional
+	arguments: the item's name, price, and whether or not it is taxable, in that order.
+	Arguments are to be delimited with spaces and/or tabs.
+	For print (P), checkout (C), and quit (Q), only the one-letter command is expected.
 	@param a Shopping bag the user wants to manipulate by shopping
 	@param a String input command from the user. If the command is valid (is A, R, P, 
 	C, or Q) then an action will be taken.
@@ -107,7 +111,7 @@ public class Shopping {
 			return;
 		}
 		if (bag.remove(new GroceryItem(args[1], Double.parseDouble(args[2]), Boolean.parseBoolean(args[3])))) {
-			System.out.printf("%s %.2f removed.", args[1], Double.parseDouble(args[2]));
+			System.out.printf("%s %.2f removed.\n", args[1], Double.parseDouble(args[2]));
 		}
 		else {
 			System.out.println("Unable to remove, this item is not in the bag.");
@@ -132,7 +136,7 @@ public class Shopping {
 			System.out.println("The bag is empty!");
 			return;
 		}
-		System.out.println("**You have " + bag.getSize() + " item(s) in the bag:");
+		System.out.println("**You have " + bag.getSize() + " item" + (bag.getSize() == 1 ? "" : "s") + " in the bag.");
 		bag.print();
 		System.out.println("**End of list");
 	}
@@ -155,11 +159,12 @@ public class Shopping {
 			System.out.println("Unable to check out, the bag is empty!");
 			return;
 		}
-		System.out.println("**Checking out " + bag.getSize() + " items.");
+		System.out.println("**Checking out " + bag.getSize() + " item" + (bag.getSize() == 1 ? "" : "s") + ".");
 		bag.print();
 		double salesPrice = bag.salesPrice(), salesTax = bag.salesTax();
 		System.out.println("*Sales total: $" + String.format("%.2f", salesPrice));
 		System.out.println("*Sales tax: $" + String.format("%.2f", salesTax));
 		System.out.println("*Total amount paid: $" + String.format("%.2f", salesPrice + salesTax));
+		bag.empty();
 	}
 }

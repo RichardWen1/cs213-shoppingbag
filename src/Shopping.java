@@ -26,7 +26,7 @@ public class Shopping {
 	
 	/**
 	Receives user inputs and then takes action appropriate to input.
-	Users may add grocery items to a shopping bag (A), remove grocery items
+	Users may add a grocery item to a shopping bag (A), remove a grocery item 
 	from a shopping bag (R), print the contents of a bag (P), checkout the contents
 	of a bag (C), and quit shopping (Q, which also automatically checks out bag 
 	contents) using the appropriate one-letter command. Any other commands are 
@@ -35,10 +35,9 @@ public class Shopping {
 	arguments: the item's name, price, and whether or not it is taxable, in that order.
 	Arguments are to be delimited with spaces and/or tabs.
 	For print (P), checkout (C), and quit (Q), only the one-letter command is expected.
-	@param a Shopping bag the user wants to manipulate by shopping
-	@param a String input command from the user. If the command is valid (is A, R, P, 
-	C, or Q) then an action will be taken.
-	@return true if the user is not finished shopping, otherwise false
+	@param	bag		the Shopping Bag the user wants to execute the command on
+	@param	command	a one-line text command from the user
+	@return	true if the user is not finished shopping, otherwise false
 	*/
 	private boolean executeCommand(ShoppingBag bag, String command) {
 		String[] args = command.trim().split("[ \t]+");
@@ -60,6 +59,10 @@ public class Shopping {
 			checkout(bag, args);
 			break;
 		case "Q":
+			if (args.length > 1) {
+				invalidCommand();
+				break;
+			}
 			if (bag.getSize() != 0) checkout(bag, args);
 			return false;
 		default:
@@ -78,13 +81,13 @@ public class Shopping {
 	}
 	
 	/**
-	Creates a new Grocery item using user input and adds it to a shopping bag.
+	Creates a new grocery item using user input and adds it to a shopping bag.
 	Item will not be added and created if user input is not valid, or does not
-	contain the name, price, and taxable status of the Grocery Item to be made.
+	contain the name, price, and taxable status of the grocery item to be made.
 	Items can only be added one item at a time.
-	@param the Shopping Bag the user wants to add a Grocery Item to.
-	@param a String containing the name, price, and taxable status of the desired
-	Grocery Item, separated by whitespace. The Add command (A) should begin the string.
+	@param	bag	the Shopping Bag the user wants to add a Grocery Item to
+	@param	args	the name, price, and taxable status of the desired item
+	The Add command (A) should be the 0th element of args.
 	*/
 	private void add(ShoppingBag bag, String[] args) {
 		if (args.length != 4) {
@@ -96,14 +99,14 @@ public class Shopping {
 	}
 	
 	/**
-	Removes a Grocery Item from a shopping bag.
-	Item must be present in the given shopping bag to be removed.
-	Item will not be removed if user input is not valid, or does not
-	contain the name, price, and taxable status of the Grocery Item to be removed.
-	Items can only be removed one item at a time.
-	@param the Shopping Bag the user wants to remove a Grocery Item from.
-	@param a String containing the name, price, and taxable status of the Grocery Item 
-	to be removed, separated by whitespace. The Remove command (R) should begin the string.
+	Removes a grocery item from a shopping bag.
+	The item must be present in the given shopping bag to be removed.
+	The item will not be removed if user input is not valid, or does not
+	contain the name, price, and taxable status of the grocery item to be removed.
+	Items can only be removed one at a time.
+	@param	bag	the Shopping Bag the user wants to remove a Grocery Item from
+	@param	args	the name, price, and taxable status of the Grocery Item to be removed
+	The Remove command (R) should be the 0th element of args.
 	*/
 	private void remove(ShoppingBag bag, String[] args) {
 		if (args.length != 4) {
@@ -122,9 +125,9 @@ public class Shopping {
 	Prints the contents of a shopping bag for the user.
 	Will tell the user the bag is empty, or tell the user the number of items in
 	the bag, followed by a list of the items in the bag.
-	@param the Shopping Bag the user wants to see the contents of
-	@param the String input command telling the program to show the contents of the
-	bag. Should consist of only one letter (P).
+	@param	bag	the Shopping Bag the user wants to see the contents of
+	@param	args	the String input command telling the program to show the contents of the bag.
+	Should consist of only one letter (P).
 	*/
 	private void print(ShoppingBag bag, String[] args) {
 		if (args.length > 1) {
@@ -145,9 +148,9 @@ public class Shopping {
 	Checkout process consists of displaying the bag's contents, then calculating
 	and displaying the total price and tax of all the items in the bag.
 	Will not check out an empty bag and instead will print an error message.
-	@param the Shopping bag the user wants to checkout
-	@param the String input command telling the program to show the contents of the
-	bag. Should consist of only one letter (C).
+	@param	bag	the Shopping bag the user wants to checkout
+	@param	args	the String input command telling the program to show the contents of the bag.
+	Should consist of only one letter (C).
 	*/
 	private void checkout(ShoppingBag bag, String[] args) {
 		if (args.length > 1) {

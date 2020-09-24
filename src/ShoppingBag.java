@@ -24,17 +24,17 @@ public class ShoppingBag {
 	}
 	
 	/**
-	Returns the number of Grocery items currently in a Shopping Bag.
-	@return size of the shopping bag
+	Returns the number of Grocery Items currently in a Shopping Bag.
+	@return		size of the shopping bag
 	*/
 	public int getSize() {
 		return size;
 	}
 	
 	/**
-	Finds a grocery item in a bag so it can be removed.
-	@param Grocery item to look for in bag
-	@return index of item in bag, or -1 if item is not found, 
+	Finds the index of a grocery item in the bag.
+	@param	item	the Grocery Item to look for in the bag
+	@return	index of item in bag, or -1 if item is not found, 
 	including when bag is empty.
 	*/
 	private int find(GroceryItem item) {
@@ -45,7 +45,7 @@ public class ShoppingBag {
 	}
 	
 	/**
-	Increases number of grocery items a Shopping Bag can hold by a set amount.
+	Increases number of Grocery Items a Shopping Bag can hold by a set amount.
 	A new, larger bag is created and all the items in the old bag are transferred to it,
 	then the old bag is replaced by the new bag. The amount a bag can grow by is set by
 	the program and cannot be changed.
@@ -61,7 +61,7 @@ public class ShoppingBag {
 	/**
 	Adds a Grocery Item to a shopping bag, increasing the capacity of the bag if needed.
 	The total number of items in the bag is updated automatically.
-	@param Grocery Item to be added to the Shopping Bag
+	@param	item	the Grocery Item to be added to the Shopping Bag
 	*/
 	public void add(GroceryItem item) {
 		if (size == bag.length) grow();
@@ -69,11 +69,11 @@ public class ShoppingBag {
 	}
 	
 	/**
-	Removes a Grocery Item from a shopping bag, if the item is in the bag.
+	Removes a Grocery Item from a Shopping Bag, if the item is in the bag.
 	Item cannot be removed if it is not in the bag.
 	The total number of items in the bag is updated automatically.
-	@param Grocery Item to be removed from the Shopping Bag
-	@return true if the item is successfully found and removed, false otherwise
+	@param	item	the Grocery Item to be removed from the Shopping Bag
+	@return	true if the item is successfully found and removed, false otherwise
 	*/
 	public boolean remove(GroceryItem item) {
 		int index = find(item);
@@ -84,10 +84,10 @@ public class ShoppingBag {
 	}
 	
 	/**
-	Calculates the total price of all the Grocery Items in a Shopping Bag.
+	Calculates the total price of all Grocery Items in the Shopping Bag.
 	Total price is the sum of the individual prices of each item in the bag.
 	Total price of an empty bag is 0.
-	@return total price of all Grocery Items in a Shopping Bag
+	@return	total price of all Grocery Items in a Shopping Bag
 	*/
 	public double salesPrice() {
 		double totalPrice = 0;
@@ -98,10 +98,10 @@ public class ShoppingBag {
 	}
 	
 	/**
-	Calculates the total tax on all the Grocery Items in a Shopping Bag.
+	Calculates the total tax on all Grocery Items in the Shopping Bag.
 	Total tax is the sum of the prices of all the taxable Grocery Items in
 	a bag, multiplied by a set, unchangeable percentage.
-	@return total tax on all Grocery Items in a Shopping Bag
+	@return	total tax on all Grocery Items in a Shopping Bag
 	*/
 	public double salesTax() {
 		double taxablePrice = 0;
@@ -112,8 +112,8 @@ public class ShoppingBag {
 	}
 	
 	/**
-	Displays the Grocery items contained in a Shopping Bag.
-	The name, price, and taxable status is printed for each Grocery Item in
+	Displays the Grocery Items contained in the Shopping Bag.
+	The name, price, and taxable status are printed for each Grocery Item in
 	the bag.
 	*/
 	public void print() {
@@ -132,9 +132,9 @@ public class ShoppingBag {
 	}
 	
 	/**
-	Tests the add(), remove(), grow(), salesTax() functions of the ShoppingBag class
-	Makes three ShoppingBag instances with several Grocery Items as test cases
-	See TestSpecification.doc document for further details on test cases.
+	Tests the add(), remove(), grow(), salesTax() functions of the ShoppingBag class.
+	Makes three ShoppingBag instances with several Grocery Items as test cases.
+	See TestSpecification.doc for further details on test cases.
 	*/
 	public static void main(String[] args) {
 		

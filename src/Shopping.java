@@ -35,9 +35,16 @@ public class Shopping {
 	arguments: the item's name, price, and whether or not it is taxable, in that order.
 	Arguments are to be delimited with spaces and/or tabs.
 	For print (P), checkout (C), and quit (Q), only the one-letter command is expected.
+<<<<<<< HEAD
 	@param	bag		the Shopping Bag the user wants to execute the command on
 	@param	command	a one-line text command from the user
 	@return	true if the user is not finished shopping, otherwise false
+=======
+	@param a Shopping bag the user wants to manipulate by shopping
+	@param a String input command from the user. If the command is valid (is A, R, P, 
+	C, or Q) then an action will be taken.
+	@return true if the user is not finished shopping, otherwise false
+>>>>>>> refs/remotes/origin/master
 	*/
 	private boolean executeCommand(ShoppingBag bag, String command) {
 		String[] args = command.trim().split("[ \t]+");

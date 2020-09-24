@@ -15,7 +15,7 @@ public class ShoppingBag {
 	
 	/**
 	Constructs a new Shopping Bag.
-	The shopping bag is intially set to a built-in starting capacity
+	The shopping bag is initially set to a built-in starting capacity
 	and initially empty (size 0).
 	*/
 	public ShoppingBag() {
@@ -67,6 +67,7 @@ public class ShoppingBag {
 		if (size == bag.length) grow();
 		bag[size++] = item;
 	}
+	
 	/**
 	Removes a Grocery Item from a shopping bag, if the item is in the bag.
 	Item cannot be removed if it is not in the bag.
@@ -77,7 +78,7 @@ public class ShoppingBag {
 	public boolean remove(GroceryItem item) {
 		int index = find(item);
 		if (index == -1) return false;
-		bag[index] = bag[size];
+		bag[index] = bag[size - 1];
 		bag[size--] = null;
 		return true;
 	}
@@ -109,15 +110,25 @@ public class ShoppingBag {
 		}
 		return taxablePrice * SALES_TAX;
 	}
-	 /**
-	 Displays the Grocery items contained in a Shopping Bag.
-	 The name, price, and taxable status is printed for each Grocery Item in
-	 the bag.
-	 */
+	
+	/**
+	Displays the Grocery items contained in a Shopping Bag.
+	The name, price, and taxable status is printed for each Grocery Item in
+	the bag.
+	*/
 	public void print() {
 		for (int i = 0; i < size; i++) {
 			System.out.println("\u2022" + bag[i].toString());
 		}
+	}
+	
+	/**
+	Completely empties the Shopping Bag.
+	For use specifically when checking out the bag.
+	*/
+	public void empty() {
+		bag = new GroceryItem[STARTING_CAPACITY];
+		size = 0;
 	}
 	
 	/**

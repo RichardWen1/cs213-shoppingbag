@@ -11,6 +11,10 @@ public class ShoppingBag {
 		size = 0;
 	}
 	
+	public int getSize() {
+		return size;
+	}
+	
 	private int find(GroceryItem item) {
 		for (int i = 0; i < size; i++) {
 			if (bag[i].equals(item)) return i;
@@ -55,11 +59,9 @@ public class ShoppingBag {
 		return taxablePrice * SALES_TAX;
 	}
 	
-	public void print() { 
-		if(size==0) {
-			System.out.println("The bag is empty!");
-		}else {
-			System.out.println("You have "+size+" item(s) in the bag.");
+	public void print() {
+		for (int i = 0; i < size; i++) {
+			System.out.println("\u2022" + bag[i].toString());
 		}
 	}
 }

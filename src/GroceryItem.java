@@ -3,6 +3,12 @@ public class GroceryItem {
 	private double price;
 	private boolean taxable;
 	
+	public GroceryItem(String name, double price, boolean taxable) {
+		this.name = name;
+		this.price = price;
+		this.taxable = taxable;
+	}
+	
 	public boolean equals(Object obj) {
 		if (!(obj instanceof GroceryItem)) return false;
 		GroceryItem item = (GroceryItem) obj;
